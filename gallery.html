@@ -1,0 +1,191 @@
+<!DOCTYPE html><!--Decalrcation of site, lets the browser know what type of document it is-->
+
+<html>
+<head>
+<meta charset="utf-8" />
+<!--font or charset of page-->
+<meta name= "viewport" content="Width=device-width">
+<!--adjaust to device screen-->
+<meta name= "description" content="Just a 3D artist">
+<!--descriptionn of site-->
+<meta name= "author" content="Arya Falakdin">
+<!--author of site-->
+<title>Arya Falakdin | Gallery</title>
+<!--title of site-->
+<link rel="stylesheet" type="text/css" href="style.css">
+<!--points to css style file-->
+</head>
+<body>
+<header>
+  <div class= "container"> <!--ID is for somthing uniqe like homepage, CLASS is used over and over-->
+    <div id= "branding">
+      <h1><span class="highlight">Arya</span> Falakdin</h1>
+    </div>
+    <nav>
+      <ul>
+        <!--UL is un-orderd list-->
+        <li><a href="index.html">Home</a></li>
+        <!--LI lists items-->
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li class="current"><a href="gallery.html">Gallery</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Images used to open the lightbox -->
+<div class="row">
+  <div class="column"> <img src="img/car.jpg" alt="a car" onclick="openModal();currentSlide(1)" class="hover-shadow"> </div>
+  <div class="column"> <img src="img/pot.jpg" alt="a pot" onclick="openModal();currentSlide(2)" class="hover-shadow"> </div>
+  <div class="column"> <img src="img/rep.jpg" alt="a reptile" onclick="openModal();currentSlide(3)" class="hover-shadow"> </div>
+  <div class="column"> <img src="img/knight.jpg" alt="a knight" onclick="openModal();currentSlide(4)" class="hover-shadow"> </div>
+</div>
+
+<!-- The Modal/Lightbox -->
+<div id="myModal" class="modal"> <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="img/car_large.jpg" alt="a large version of car" style="width:100%"> </div>
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="img/pot_large.jpg" alt="a large version of a pot" style="width:100%"> </div>
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="img/rep_large.jpg" alt="a large version of a reptile" style="width:100%"> </div>
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="img/knight_large.jpg" alt="a large version of a knight" style="width:100%"> </div>
+    
+    <!-- Next/previous controls --> 
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next" onclick="plusSlides(1)">&#10095;</a> 
+    
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+    
+    <!-- Thumbnail image controls -->
+    <div class="column"> <img class="demo" src="img/car.jpg" alt="a car" onclick="currentSlide(1)"> </div>
+    <div class="column"> <img class="demo" src="img/pot.jpg" alt="a pot" onclick="currentSlide(2)"> </div>
+    <div class="column"> <img class="demo" src="img/rep.jpg" alt="a reptile" onclick="currentSlide(3)"> </div>
+    <div class="column"> <img class="demo" src="img/knight.jpg" alt="a knight" onclick="currentSlide(4)"> </div>
+  </div>
+</div>
+<div class="img-zoom-container"> <!--this is javascript image zoom--> 
+  <img id="myimage" src="img/island.jpg" alt="a island" width="300" height="240">
+  <div id="myresult" class="img-zoom-result"></div>
+</div>
+<script>				//This is javescripts lightbox
+// Open the Modal
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script> 
+<!--this is javascript image zoom--> 
+<script>
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /* Create lens: */
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /* Insert lens: */
+  img.parentElement.insertBefore(lens, img);
+  /* Calculate the ratio between result DIV and lens: */
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /* Set background properties for the result DIV */
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  /* Execute a function when someone moves the cursor over the image, or the lens: */
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /* And also for touch screens: */
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /* Prevent any other actions that may occur when moving over the image */
+    e.preventDefault();
+    /* Get the cursor's x and y positions: */
+    pos = getCursorPos(e);
+    /* Calculate the position of the lens: */
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /* Prevent the lens from being positioned outside the image: */
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /* Set the position of the lens: */
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /* Display what the lens "sees": */
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /* Get the x and y positions of the image: */
+    a = img.getBoundingClientRect();
+    /* Calculate the cursor's x and y coordinates, relative to the image: */
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /* Consider any page scrolling: */
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script> 
+<!--this starts zoom effect--> 
+<script>
+imageZoom("myimage", "myresult");
+</script>
+<footer>
+  <p>Arya Falakdin, Copyright &copy; 2019</p>
+  <!--Bottom of page, &copy; craetes copyright symbol--> 
+</footer>
+</body>
+</html>
+<!--become familer with css and create a stylesheet and go crazy woth CSS From CSS ref guid on iLearn manual-->

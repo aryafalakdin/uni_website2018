@@ -1,0 +1,299 @@
+body {
+    font: 15px'Roboto', Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+}
+/*Global*/
+.container {
+    width: 88%;
+    margin: auto;
+    overFlow: hidden;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+.button_1 {
+    height: 38px;
+    background: #008063;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+}
+.dark {
+    padding: 15px;
+    background: #05285E;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/*Header*/
+header {
+    background: #05285E;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #871616 3px solid;
+    text-transform: uppercase;
+}
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+header ul {
+    margin: 0;
+    padding: 0;
+}
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+header #branding {
+    float: left;
+}
+header #branding h1 {
+    margin: 0;
+}
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+header .highlight, header .current a {
+    color: #871616;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+header a:hover {
+    color: #00A185;
+    font-weight: normal;
+    text-transform: uppercase;
+	transition:.5s;
+}
+/*Showcase*/
+#showcase {
+    min-height: 375px;
+    background: url('img/Showcase02.jpg')no-repeat 0 -600px;
+    text-align: center;
+    color: #ffffff;
+}
+#showcase h1 {
+    margin-top: 100px;
+    font-size: 55px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+#showcase p {
+    font-size: 20px;
+    color: #FFFFFF;
+}
+/*newsletter*/
+#newsletter {
+    padding: 75px;
+    color: #ffffff;
+    background: #313131;
+}
+#newsletter h1 {
+    float: left;
+    margin-top: -20px;
+}
+#newsletter form {
+    float: right;
+    margin-top: -20px;
+}
+#newsletter input[type="email"] {
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+}
+/*button*/
+#boxes {
+    margin-top: 100px;
+}
+#boxes .box {
+    float: left;
+    text-align: center;
+    width: 31%;
+    padding: 10px;
+}
+#boxes .box img {
+    width: 200px;
+}
+/*Sidebar*/
+aside#sidebar {
+    float: right;
+    width: 30%;
+    margin-top: 10px;
+}
+/*Contact-form*/
+aside#sidebar .contact input, aside#sidebar .contact textarea {
+    width: 90%;
+    padding: 5px;
+}
+article#main-col {
+    float: left;
+    width: 65%;
+}
+/*Contact*/
+
+
+footer {
+    padding: 20px;
+    margin-top: 407px;
+    color: #ffffff;
+    background-color: #05285E;
+    text-align: center;
+}
+
+/*Media Queries*/
+@media(max-width:768px) {
+header #branding, header nav, header nav li, #newsletter h1, #newsletter form, #boxes .box, article#main-col, aside#sidebar {
+    float: none;
+    text-align: center;
+    width: 100%;
+}
+header {
+    padding-bottom: 20px;
+}
+#showcase h1 {
+    margin-top: 40px;
+}
+#newsletter button, .contact button {
+    display: block;
+    width: 100%;
+}
+#newsletter form input[type="email"], .contact input, .contact textarea {
+    width: 100%;
+    margin-bottom: 5px;
+}
+}
+/*this is javascript lightbox css*/
+.row > .column {
+    padding: 10px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* create four equal columns that floats next to eachother */
+.column {
+    float: left;
+    width: 19%;
+}
+/* the modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+/* modal content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+}
+/* the close button */
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* hide the slides by default */
+.mySlides {
+    display: none;
+}
+/* next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+/* position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+/* on hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+/* caption text */
+.caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+}
+img.demo {
+    opacity: 0.6;
+}
+.active, .demo:hover {
+    opacity: 1;
+}
+img.hover-shadow {
+    transition: 0.3s;
+}
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*this is javascript imagezoom css*/
+* {
+    box-sizing: border-box;
+}
+.img-zoom-container {
+    position: relative;
+}
+.img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    /*set the size of the lens:*/
+    width: 40px;
+    height: 40px;
+}
+.img-zoom-result {
+    border: 1px solid #d4d4d4;
+    /*set the size of the result div:*/
+    width: 300px;
+    height: 300px;
+}
